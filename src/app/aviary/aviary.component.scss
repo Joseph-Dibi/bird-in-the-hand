@@ -1,0 +1,67 @@
+@use "../../styles.scss" as *; // Import variables from styles.scss
+
+.table-container {
+  height: 90vh; /* Set the maximum height for the table */
+  overflow-y: auto; /* Enable vertical scrolling */
+  overflow-x: hidden; /* Hide horizontal overflow */
+}
+
+// table {
+//   width: 100%;
+//   border-collapse: collapse;
+// }
+
+// .mat-header-row {
+//   position: sticky;
+//   top: 0;
+//   background-color: $primary-color; /* Warm cinnamon brown */
+//   z-index: 1; /* Ensure the header stays on top */
+// }
+
+// .table-image {
+//   width: 50px;
+//   height: 50px;
+//   object-fit: cover; /* Ensure the image fits nicely */
+//   border-radius: 5px;
+// }
+
+.mat-mdc-table {
+  height: 90vh;
+  background-color: $primary-color; /* Use the website's background theme color */
+  color: $text-color; /* Use the website's text theme color */
+  border: 1px solid $tertiary-color; /* Use the website's border theme color */
+
+  tbody {
+    display: flex;
+    flex-grow: 1; /* Allow rows to expand to fill available space */
+  }
+
+  .table-image {
+    max-height: 30%;
+    max-width: 30%; 
+    object-fit: cover; /* Ensure the image fits nicely within the row */
+  }
+
+  .table-rows {
+    // display: flex;
+    // flex-grow: 1; /* Make each row take up equal space */
+    align-items: center; /* Center content vertically */
+  }
+
+  th {
+    display: table-cell; /* Ensure header cells remain in their default layout */
+    position: sticky; /* Make header cells sticky */
+    top: 0; /* Stick to the top of the table */
+    height: 10vh;
+    font-weight: bold; /* Make header text bold */
+    text-transform: uppercase; /* Transform header text to uppercase */
+  }
+
+}
+.aviary-table .mat-column-photo {
+  text-align: center;
+}
+.aviary-table .mat-column-photo img {
+  display: block;
+  margin: 0 auto;
+}

@@ -1,0 +1,161 @@
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use "@angular/material" as mat;
+
+html {
+    @include mat.theme((
+      color: (
+        theme-type: light,
+      ),
+      typography: Roboto,
+      density: 0,
+    ));
+  }
+/* Warm Fall Colors */
+$primary-color: #d2691e; /* Warm cinnamon brown */
+$secondary-color: #ff8c00; /* Vibrant pumpkin orange */
+$tertiary-color: #8b4513; /* Deep chestnut brown */ 
+$text-color: #fff8e7; /* Deep chestnut brown */ 
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  background-color: $primary-color; /* Cinnamon brown background */
+  color: $text-color; /* Soft cream text for contrast */
+}
+
+/* Begin Global Styles */
+:root {
+  @include mat.button-overrides(
+    (
+      filled-container-color: $secondary-color,
+      filled-label-text-color: white,
+    )
+  );
+}
+.mat-mdc-raised-button:not(:disabled) {
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  text-transform: uppercase;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  margin: 5%;
+
+  &:not(:disabled) {
+    background-color: $secondary-color; /* Vibrant pumpkin orange */
+    color: $text-color; /* White text */
+  }
+  
+  &:hover {
+    background-color: darken($secondary-color, 10%);
+    transform: scale(1.05); /* Slight zoom effect */
+  }
+
+  &:active {
+    background-color: darken($secondary-color, 15%);
+    transform: scale(0.98); /* Slight press effect */
+  }
+}
+
+.form-input {
+  padding: 1%;
+}
+
+.login-form {
+    padding: 5%
+}
+
+.card {
+  height: 100vh; /* Full viewport height */
+}
+
+a {
+  color: $tertiary-color; /* Chestnut brown links */
+  text-decoration: none;
+
+  &:hover {
+    color: lighten($tertiary-color, 10%);
+  }
+}
+
+.flex-column {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centers horizontally by default */
+}
+
+/* End Global Styles */
+
+/* Begin Login Page Styling */
+
+.site-header {
+  background-color: $primary-color; /* Warm cinnamon brown */
+  padding: 20px;
+  text-align: center;
+  border-bottom: 3px solid $tertiary-color; /* Chestnut brown border */
+  margin: 5%;
+}
+
+.site-title {
+  color: $secondary-color; /* Vibrant pumpkin orange */
+  font-family: "Roboto", "Helvetica Neue", sans-serif;
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin: 0;
+}
+
+.bh-logo {
+  display: block;
+  width: 35vw; /* Quarter of the viewport width */
+  max-width: 100%; /* Prevents overflow */
+  height: auto; /* Maintains aspect ratio */
+}
+
+.logo-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centers horizontally by default */
+  justify-content: flex-start; /* Aligns above center line */
+  text-align: center;
+}
+
+/* Example usage in the logo container */
+.logo-container {
+  background-color: lighten($primary-color, 20%);
+  border: 2px solid $tertiary-color;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+/* Adjust for larger screens (desktop) */
+@media (min-width: 769px) {
+  .logo-container {
+    flex-direction: row; /* Aligns items horizontally */
+    justify-content: space-evenly; /* Aligns logo to the left */
+    align-items: center; /* Centers vertically */
+    padding: 0; /* Removes padding */
+  }
+
+  .bh-logo {
+    width: 20vw; /* Adjust size for desktop */
+    margin-left: 5%; /* Adds spacing from the left */
+  }
+
+  .login-form {
+    display: flex;
+    flex-direction: column;
+    padding: 0; /* Removes padding */
+  }
+
+  .form-input {
+    padding: 5px;
+  }
+}
+
+/* End Login Page Styling */

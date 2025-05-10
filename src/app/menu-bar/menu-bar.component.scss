@@ -1,0 +1,33 @@
+@use "../../styles.scss" as *; // Import variables from styles.scss
+
+.menu-bar {
+  height: 10vh; /* Set height to 5% of viewport height */
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around; /* Distribute items evenly */
+  align-items: center; /* Center items vertically */
+  background-color: $tertiary-color; /* Warm cinnamon brown */
+
+  a.mat-list-item {
+    color: $text-color; /* Soft cream text */
+    text-transform: uppercase;
+    font-weight: bold;
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: lighten($text-color, 10%);
+    }
+  }
+}
+
+.menu-list {
+  display: flex;
+  flex-direction: row;
+}
+
+
+.small-logo {
+    margin-left: 5vh;
+    width: auto; /* Maintain aspect ratio */
+    height: 10vh; /* Adjust size as needed */
+}
