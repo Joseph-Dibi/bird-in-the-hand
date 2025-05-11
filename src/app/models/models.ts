@@ -1,8 +1,11 @@
 export interface NestProfile {
   id: number;
   profileName: string;
-  uploadedPhotos: AviaryPhoto[];
   profilePicture: string;
+  description: string;
+  location: string;
+  memberSince: string;
+  uploadedPhotos: AviaryPhoto[];
 }
 
 export interface AviaryPhoto {
@@ -13,6 +16,7 @@ export interface AviaryPhoto {
   uploadDate: string;
   author: string;
   comments: Comment[];
+  public: boolean;
 }
 
 export interface Comment {

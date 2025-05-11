@@ -1,21 +1,24 @@
 // Custom Theming for Angular Material
 // For more information: https://material.angular.io/guide/theming
 @use "@angular/material" as mat;
-
+@import "@fortawesome/fontawesome-free/css/all.css";
+@import "mdb-angular-ui-kit/assets/scss/mdb.scss";
 html {
-    @include mat.theme((
+  @include mat.theme(
+    (
       color: (
         theme-type: light,
       ),
       typography: Roboto,
       density: 0,
-    ));
-  }
+    )
+  );
+}
 /* Warm Fall Colors */
 $primary-color: #d2691e; /* Warm cinnamon brown */
 $secondary-color: #ff8c00; /* Vibrant pumpkin orange */
-$tertiary-color: #8b4513; /* Deep chestnut brown */ 
-$text-color: #fff8e7; /* Deep chestnut brown */ 
+$tertiary-color: #8b4513; /* Deep chestnut brown */
+$text-color: #fff8e7; /* Deep chestnut brown */
 
 html,
 body {
@@ -49,7 +52,7 @@ body {
     background-color: $secondary-color; /* Vibrant pumpkin orange */
     color: $text-color; /* White text */
   }
-  
+
   &:hover {
     background-color: darken($secondary-color, 10%);
     transform: scale(1.05); /* Slight zoom effect */
@@ -66,11 +69,12 @@ body {
 }
 
 .login-form {
-    padding: 5%
+  padding: 5%;
 }
 
 .card {
   height: 100vh; /* Full viewport height */
+  background-color: $primary-color; /* Cinnamon brown background */
 }
 
 a {
@@ -83,9 +87,15 @@ a {
 }
 
 .flex-column {
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* Centers horizontally by default */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
 /* End Global Styles */
@@ -93,15 +103,15 @@ a {
 /* Begin Login Page Styling */
 
 .site-header {
-  background-color: $primary-color; /* Warm cinnamon brown */
+  background-color: $primary-color;
   padding: 20px;
   text-align: center;
-  border-bottom: 3px solid $tertiary-color; /* Chestnut brown border */
+  border-bottom: 3px solid $tertiary-color;
   margin: 5%;
 }
 
 .site-title {
-  color: $secondary-color; /* Vibrant pumpkin orange */
+  color: $text-color;
   font-family: "Roboto", "Helvetica Neue", sans-serif;
   font-size: 2.5rem;
   font-weight: bold;

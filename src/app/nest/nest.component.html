@@ -1,3 +1,38 @@
 <app-menu-bar></app-menu-bar>
+<div class="profile-page">
+  <div class="profile-header flex-row">
+    <div class="profile-picture-section flex-column">
+      <img
+        src="assets/icons/jane-featherstone.jpg"
+        alt="Profile Picture"
+        class="profile-picture"
+      />
+      <button mat-raised-button class="change-picture-button">
+        Change Profile Picture
+      </button>
+    </div>
+    <div class="profile-name-section">
+      <h1 class="profile-name">{{ profile.profileName }}</h1>
+      <h4 class="profile-name">{{ profile.memberSince }}</h4>
+    </div>
+  </div>
+  <div class="profile-slider">
+    <mdb-carousel [controls]="true" [indicators]="true" dark="true">
+        <ng-container *ngFor="let slide of profile.uploadedPhotos">
+          <mdb-carousel-item>
+            <img
+              [src]="slide.photo"
+              class="d-block w-100 carousel-image"
+              [alt]="slide.title"
+            />
+            <div class="carousel-caption d-none d-md-block">
+              <h5>{{ slide.title }}</h5>
+              <p>{{ slide.uploadDate }}</p>
+            </div>
+          </mdb-carousel-item>
+        </ng-container>
 
-<p>nest works!</p>
+    </mdb-carousel>
+
+  </div>
+</div>

@@ -1,0 +1,127 @@
+@use "../../styles.scss" as *; // Import variables from styles.scss
+
+.profile-page {
+  height: 90vh; /* Set the maximum height for the table */
+  overflow-y: auto; /* Enable vertical scrolling */
+  overflow-x: hidden; /* Hide horizontal overflow */
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  background-color: $primary-color; /* Cinnamon brown background */
+  color: $text-color; /* Soft cream text for contrast */
+}
+
+.profile-header {
+  justify-content: space-evenly;
+}
+
+.profile-name {
+  color: $text-color;
+}
+
+.profile-picture {
+  display: block;
+  width: 10vw; /* Quarter of the viewport width */
+  height: auto; /* Maintains aspect ratio */
+  margin-left: 0px;
+}
+
+.profile-picture-section {
+  justify-content: space-evenly;
+}
+
+.mat-mdc-raised-button:not(:disabled) {
+  border-radius: 5px;
+  margin: 5px 10px;
+  padding: 5px;
+  font-size: 1rem;
+  text-transform: uppercase;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+
+  &:not(:disabled) {
+    background-color: $secondary-color; /* Vibrant pumpkin orange */
+    color: $text-color; /* White text */
+  }
+
+  &:hover {
+    background-color: darken($secondary-color, 10%);
+    transform: scale(1.05); /* Slight zoom effect */
+  }
+
+  &:active {
+    background-color: darken($secondary-color, 15%);
+    transform: scale(0.98); /* Slight press effect */
+  }
+}
+
+.profile-slider {
+  padding: 20px;
+  margin: 0 auto; /* Centers the element horizontally */
+  display: flex;
+  justify-content: center; /* Centers content horizontally */
+  align-items: center; /* Centers content vertically */
+}
+
+.carousel-control-next {
+  //   position: absolute;
+  right: calc(
+    10px + (100% - var(profile-slider)) / 2
+  ); /* Dynamically 10px from the right of carousel-image */
+}
+
+.carousel-control-prev {
+  //   position: absolute;
+  left: calc(
+    10px + (100% - var(profile-slider)) / 2
+  ); /* Dynamically 10px from the left of carousel-image */
+}
+.logo-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centers horizontally by default */
+  justify-content: flex-start; /* Aligns above center line */
+  text-align: center;
+}
+
+/* Example usage in the logo container */
+.logo-container {
+  background-color: lighten($primary-color, 20%);
+  border: 2px solid $tertiary-color;
+  border-radius: 10px;
+}
+
+.carousel-image {
+  min-height: 45%;
+  min-width: 45%;
+  max-height: 85%;
+  max-width: 85%;
+  object-fit: cover; /* Ensure the image fits nicely within the row */
+  border-radius: 5px; /* Optional: Add rounded corners */
+}
+
+/* Adjust for larger screens (desktop) */
+@media (min-width: 769px) {
+  .profile-slider {
+    padding: 20px;
+    margin: 0 auto; /* Centers the element horizontally */
+    display: flex;
+    justify-content: center; /* Centers content horizontally */
+    align-items: center; /* Centers content vertically */
+  }
+  .profile-picture {
+    display: block;
+    height: auto; /* Maintains aspect ratio */
+    max-width: 20vw; /* Adjust size for desktop */
+
+    margin-left: 5%; /* Adds spacing from the left */
+  }
+
+  .profile-picture-section {
+    justify-content: space-evenly;
+  }
+
+  .carousel-image {
+    max-height: 70vh;
+    object-fit: cover;
+    border-radius: 5px; /* Optional: Add rounded corners */
+  }
+}

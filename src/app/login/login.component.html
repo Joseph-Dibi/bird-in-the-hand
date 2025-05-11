@@ -14,11 +14,13 @@
       <span>
         <mat-form-field appearance="fill" class="form-input">
           <mat-label>Username</mat-label>
-          <input matInput type="text" placeholder="Enter your username" />
+          <input matInput [formControl]="username" type="text" placeholder="Enter your username" />
+          <mat-error *ngIf="username.touched && username.dirty && username.invalid">{{ getErrorMessageFor('username') }}</mat-error>
         </mat-form-field>
         <mat-form-field appearance="fill" class="form-input">
           <mat-label>Password</mat-label>
-          <input matInput type="password" placeholder="Enter your password" />
+          <input matInput [formControl]="password" type="password" placeholder="Enter your password" />
+          <mat-error *ngIf="password.touched && password.dirty && password.invalid">{{ getErrorMessageFor('password') }}</mat-error>
         </mat-form-field>
       </span>
       <span>

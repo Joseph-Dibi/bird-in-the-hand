@@ -4,9 +4,25 @@
   <table class="aviary-table" mat-table [dataSource]="dataSource" class="mat-elevation-z8">
     <!-- Image Column -->
     <ng-container matColumnDef="photo">
-      <th mat-header-cell *matHeaderCellDef>Aviary Photos</th>
-      <td mat-cell *matCellDef="let element">
-        <img class="list-image" [src]="element.photo" alt="Photo" class="table-image" />
+      <th mat-header-cell *matHeaderCellDef class="aviary-title photo-column">Aviary Photos</th>
+      <td mat-cell *matCellDef="let element" class="photo-column">
+        <span class="flex-column">
+          <img class="list-image" [src]="element.photo" alt="Photo" class="table-image" />
+          <h4>{{ element.title }}</h4>
+        </span>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="information">
+      <th mat-header-cell *matHeaderCellDef class="info-column"></th>
+      <td mat-cell *matCellDef="let element" class="info-column">
+        <div class="table-text">
+          <span class="flex-column">
+            <h4>Posted By: {{ element.author }}</h4>
+            <h4>Uploaded On: {{ element.uploadDate }}</h4>
+            <h4>Flock: {{ element.votes }}</h4>
+          </span>
+        </div>
       </td>
     </ng-container>
 

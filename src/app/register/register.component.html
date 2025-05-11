@@ -1,0 +1,46 @@
+<div class="card">
+  <header class="site-header">
+    <h1 class="site-title">Bird in the Hand</h1>
+  </header>
+  <div class="logo-container">
+    <div>
+      <img
+        class="bh-logo"
+        src="assets/icons/bird-in-hand-logo.jpg"
+        alt="Bird in Hand Logo"
+      />
+    </div>
+    <form class="login-form">
+      <span>
+        <mat-form-field appearance="fill" class="form-input">
+          <mat-label>Username</mat-label>
+          <input matInput [formControl]="username" type="text" placeholder="Enter your username" />
+          <mat-error *ngIf="username.touched && username.dirty && username.invalid">{{ getErrorMessageFor('username') }}</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill" class="form-input">
+          <mat-label>Password</mat-label>
+          <input matInput [formControl]="password" type="password" placeholder="Enter your password" />
+          <mat-error *ngIf="password.touched && password.dirty && password.invalid">{{ getErrorMessageFor('password') }}</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill" class="form-input">
+          <mat-label>Email</mat-label>
+          <input matInput [formControl]="email" type="email" placeholder="Enter your Email Address" />
+          <mat-error *ngIf="email.touched && email.dirty && email.invalid">{{ getErrorMessageFor('email') }}</mat-error>
+        </mat-form-field>
+      </span>
+      <span>
+        <button mat-raised-button routerLink="/login">Cancel</button>
+        <button
+          mat-raised-button
+          type="submit"
+          class="btn btn-primary"
+          routerLink="/nest"
+          [disabled]="loginForm.invalid"
+          (click)="onSubmit()"
+        >
+          Register
+        </button>
+      </span>
+    </form>
+  </div>
+</div>
