@@ -40,6 +40,7 @@ body {
     )
   );
 }
+
 .mat-mdc-raised-button:not(:disabled) {
   border-radius: 5px;
   padding: 10px 20px;
@@ -72,6 +73,10 @@ body {
   padding: 5%;
 }
 
+.font-color {
+  color: $text-color !important; /* Soft cream text */
+}
+
 .card {
   height: 100vh; /* Full viewport height */
   background-color: $primary-color; /* Cinnamon brown background */
@@ -97,10 +102,6 @@ a {
   flex-direction: row;
   align-items: center;
 }
-
-/* End Global Styles */
-
-/* Begin Login Page Styling */
 
 .site-header {
   background-color: $primary-color;
@@ -133,10 +134,6 @@ a {
   align-items: center; /* Centers horizontally by default */
   justify-content: flex-start; /* Aligns above center line */
   text-align: center;
-}
-
-/* Example usage in the logo container */
-.logo-container {
   background-color: lighten($primary-color, 20%);
   border: 2px solid $tertiary-color;
   padding: 20px;
@@ -145,6 +142,29 @@ a {
 
 /* Adjust for larger screens (desktop) */
 @media (min-width: 769px) {
+  .mat-mdc-raised-button:not(:disabled) {
+    border-radius: 5px;
+    padding: 10px 45px;
+    font-size: 1rem;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin: 5%;
+
+    &:not(:disabled) {
+      background-color: $secondary-color; /* Vibrant pumpkin orange */
+      color: $text-color; /* White text */
+    }
+
+    &:hover {
+      background-color: darken($secondary-color, 10%);
+      transform: scale(1.05); /* Slight zoom effect */
+    }
+
+    &:active {
+      background-color: darken($secondary-color, 15%);
+      transform: scale(0.98); /* Slight press effect */
+    }
+  }
   .logo-container {
     flex-direction: row; /* Aligns items horizontally */
     justify-content: space-evenly; /* Aligns logo to the left */
@@ -156,16 +176,4 @@ a {
     width: 20vw; /* Adjust size for desktop */
     margin-left: 5%; /* Adds spacing from the left */
   }
-
-  .login-form {
-    display: flex;
-    flex-direction: column;
-    padding: 0; /* Removes padding */
-  }
-
-  .form-input {
-    padding: 5px;
-  }
 }
-
-/* End Login Page Styling */

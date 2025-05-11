@@ -1,12 +1,11 @@
-<div class="menu-bar" backgroundColor="white">
-  <mat-nav-list class="menu-list">
-    <button mat-raised-button><a mat-list-item routerLink="/nest">Nest</a></button>
-    <button mat-raised-button><a mat-list-item routerLink="/aviary">Aviary</a></button>
-    <button mat-raised-button><a mat-list-item routerLink="/logout">Logout</a></button>
+<div class="menu-bar">
+  <mat-nav-list class="flex-row">
+    <button id="nest-button" mat-raised-button routerLink="/nest">Nest</button>
+    <button id="aviary-button" mat-raised-button routerLink="/aviary">Aviary</button>
+    <button id="logout-button" mat-raised-button routerLink="/logout">Logout</button>
   </mat-nav-list>
-  <div></div>
-  <span class="menu-list">
-    <h1>Bird in the Hand</h1>
+  <span class="flex-row">
+    <h5>Bird in the Hand</h5>
     <img
       class="small-logo"
       src="assets/icons/bird-in-hand-logo.jpg"

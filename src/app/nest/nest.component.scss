@@ -1,7 +1,7 @@
 @use "../../styles.scss" as *; // Import variables from styles.scss
 
 .profile-page {
-  height: 90vh; /* Set the maximum height for the table */
+  height: 100vh; /* Set the maximum height for the table */
   overflow-y: auto; /* Enable vertical scrolling */
   overflow-x: hidden; /* Hide horizontal overflow */
   margin: 0;
@@ -20,9 +20,15 @@
 
 .profile-picture {
   display: block;
-  width: 10vw; /* Quarter of the viewport width */
+  width: 20vw;
   height: auto; /* Maintains aspect ratio */
-  margin-left: 0px;
+  margin: 1vh;
+  border-radius: 5px;
+}
+
+#change-profile-picture {
+  font-size: 10px;
+  height: 2vh;
 }
 
 .profile-picture-section {
@@ -63,17 +69,28 @@
 
 .carousel-control-next {
   //   position: absolute;
-  right: calc(
-    10px + (100% - var(profile-slider)) / 2
-  ); /* Dynamically 10px from the right of carousel-image */
+  display: none;
 }
 
 .carousel-control-prev {
   //   position: absolute;
-  left: calc(
-    10px + (100% - var(profile-slider)) / 2
-  ); /* Dynamically 10px from the left of carousel-image */
+  display: none;
 }
+
+.custom-control {
+  width: auto;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.carousel-control-prev.custom-control {
+  left: -15vh; /* adjust based on item padding/margins */
+}
+
+.carousel-control-next.custom-control {
+  right: -15vh;
+}
+
 .logo-container {
   display: flex;
   flex-direction: column;
@@ -94,23 +111,21 @@
   min-width: 45%;
   max-height: 85%;
   max-width: 85%;
+  margin: 4vh;
   object-fit: cover; /* Ensure the image fits nicely within the row */
   border-radius: 5px; /* Optional: Add rounded corners */
+}
+h1,
+h4 {
+  font-size: 0.7rem;
 }
 
 /* Adjust for larger screens (desktop) */
 @media (min-width: 769px) {
-  .profile-slider {
-    padding: 20px;
-    margin: 0 auto; /* Centers the element horizontally */
-    display: flex;
-    justify-content: center; /* Centers content horizontally */
-    align-items: center; /* Centers content vertically */
-  }
   .profile-picture {
     display: block;
     height: auto; /* Maintains aspect ratio */
-    max-width: 20vw; /* Adjust size for desktop */
+    max-width: 15vw; /* Adjust size for desktop */
 
     margin-left: 5%; /* Adds spacing from the left */
   }
@@ -120,8 +135,32 @@
   }
 
   .carousel-image {
-    max-height: 70vh;
+    height: 40vh;
     object-fit: cover;
     border-radius: 5px; /* Optional: Add rounded corners */
+  }
+
+  
+.carousel-control-next {
+  //   position: absolute;
+  display: none;
+}
+
+.carousel-control-prev {
+  //   position: absolute;
+  display: none;
+}
+
+  .carousel-control-prev.custom-control {
+    left: -25vh; /* adjust based on item padding/margins */
+  }
+
+  .carousel-control-next.custom-control {
+    right: -25vh; /* adjust based on item padding/margins */
+  }
+
+  h1,
+  h4 {
+    font-size: 1.5rem; /* Adjust font size for larger screens */
   }
 }

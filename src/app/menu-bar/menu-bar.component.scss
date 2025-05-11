@@ -7,27 +7,38 @@
   justify-content: space-around; /* Distribute items evenly */
   align-items: center; /* Center items vertically */
   background-color: $tertiary-color; /* Warm cinnamon brown */
-
-  a.mat-list-item {
-    color: $text-color; /* Soft cream text */
-    text-transform: uppercase;
-    font-weight: bold;
-    transition: color 0.3s ease;
-
-    &:hover {
-      color: lighten($text-color, 10%);
-    }
-  }
+  color: $text-color; /* Apply the soft cream text color */
 }
 
-.menu-list {
-  display: flex;
-  flex-direction: row;
+.logo {
+  width: 1vh; /* Maintain aspect ratio */
+  height: 1vh; /* Adjust size as needed */
 }
 
+h5 {
+  font-size: .7rem; /* Adjust font size as needed */
+  margin: 0; /* Remove default margin */
+  color: $text-color; /* Soft cream text */
+}
 
 .small-logo {
+  width: auto; /* Maintain aspect ratio */
+  height: 5vh; /* Adjust size as needed */
+  margin: 1vh; /* Add some margin */
+  border-radius: 5px;
+}
+
+/* Adjust for larger screens (desktop) */
+@media (min-width: 769px) {
+  .small-logo {
     margin-left: 5vh;
     width: auto; /* Maintain aspect ratio */
     height: 10vh; /* Adjust size as needed */
+  }
+
+  h5 {
+  font-size: 1.5rem; /* Adjust font size as needed */
+  color: $text-color; /* Soft cream text */
+  padding: 1vh;;
+}
 }

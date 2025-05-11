@@ -1,0 +1,15 @@
+/* Begin Login Page Styling */
+@use "../../styles.scss" as *; // Import variables from styles.scss
+
+/* Adjust for larger screens (desktop) */
+@media (min-width: 769px) {
+  .login-form {
+    display: flex;
+    flex-direction: column;
+    padding: 0; /* Removes padding */
+  }
+
+  .form-input {
+    padding: 5px;
+  }
+}

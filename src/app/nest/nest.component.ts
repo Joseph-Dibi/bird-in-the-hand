@@ -20,16 +20,6 @@ export class NestComponent implements OnInit {
       public: false,
     },
     {
-      id: 3,
-      title: 'Lilac-Breasted Roller',
-      photo: 'assets/birds/african-darter.jpg',
-      votes: 150,
-      uploadDate: '2025-05-05',
-      author: 'Jane Featherstone',
-      comments: [],
-      public: false,
-    },
-    {
       id: 4,
       title: 'Better Village Weaver',
       photo: 'assets/birds/village-weaver2.jpg',

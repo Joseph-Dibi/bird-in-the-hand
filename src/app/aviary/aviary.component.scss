@@ -49,6 +49,7 @@
     text-transform: uppercase; /* Transform header text to uppercase */
     background-color: $primary-color; /* Warm cinnamon brown */
     z-index: 1; /* Ensure the header stays on top */
+    border-bottom: 2px solid $tertiary-color; /* Use the website's border theme color */
   }
 }
 
@@ -67,9 +68,10 @@ td.mat-cell {
   vertical-align: top; /* Align content to the top of the cell */
 }
 
-// td[mat-cell]:nth-child(2) {
-//   width: 33.33%; /* Set the information column to take 1/3 of the row width */
-// }
+tr {
+  border: 1px solid $tertiary-color; /* Use the website's border theme color */
+}
+
 
 th.mat-header-cell {
   font-weight: bold;
@@ -83,9 +85,11 @@ tr.mat-row {
 
 .photo-column {
   width: 95%;
+  color: $text-color;
 }
 .info-column {
   width: 5%;
+  color: $text-color;
 }
 
 h4 {
@@ -128,6 +132,7 @@ h4 {
       text-transform: uppercase; /* Transform header text to uppercase */
       background-color: $primary-color; /* Warm cinnamon brown */
       z-index: 1; /* Ensure the header stays on top */
+      border-bottom: 2px solid $tertiary-color; /* Use the website's border theme color */
     }
   }
 

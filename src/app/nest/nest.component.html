@@ -1,23 +1,30 @@
-<app-menu-bar></app-menu-bar>
 <div class="profile-page">
-  <div class="profile-header flex-row">
-    <div class="profile-picture-section flex-column">
-      <img
-        src="assets/icons/jane-featherstone.jpg"
-        alt="Profile Picture"
-        class="profile-picture"
-      />
-      <button mat-raised-button class="change-picture-button">
-        Change Profile Picture
-      </button>
+  <app-menu-bar></app-menu-bar>
+  <div class="flex-column">
+    <div class="profile-header flex-row">
+      <div class="profile-picture-section flex-column">
+        <img
+          src="assets/icons/jane-featherstone.jpg"
+          alt="Profile Picture"
+          class="profile-picture"
+        />
+        <button mat-raised-button id="change-profile-picture">Change</button>
+      </div>
+      <div class="profile-name-section">
+        <h1 class="profile-name">The Nest of {{ profile.profileName }}</h1>
+        <h4 class="profile-name">
+          Flocking with us since
+          {{ profile.memberSince | date : "dd MMMM yyyy" }}
+        </h4>
+      </div>
     </div>
-    <div class="profile-name-section">
-      <h1 class="profile-name">{{ profile.profileName }}</h1>
-      <h4 class="profile-name">{{ profile.memberSince }}</h4>
-    </div>
-  </div>
-  <div class="profile-slider">
-    <mdb-carousel [controls]="true" [indicators]="true" dark="true">
+    <div class="profile-slider">
+      <mdb-carousel #profileCarousel
+        [controls]="true"
+        [indicators]="true"
+        dark="true"
+        [interval]="0"
+      >
         <ng-container *ngFor="let slide of profile.uploadedPhotos">
           <mdb-carousel-item>
             <img
@@ -30,9 +37,24 @@
               <p>{{ slide.uploadDate }}</p>
             </div>
           </mdb-carousel-item>
+          <button
+            class="carousel-control-prev custom-control"
+            type="button"
+            data-mdb-target="#profileCarousel"
+            data-mdb-slide="prev"
+          >
+            <span class="carousel-control-prev-icon"></span>
+          </button>
+          <button
+            class="carousel-control-next custom-control"
+            type="button"
+            data-mdb-target="#profileCarousel"
+            data-mdb-slide="next"
+          >
+            <span class="carousel-control-next-icon"></span>
+          </button>
         </ng-container>
-
-    </mdb-carousel>
-
+      </mdb-carousel>
+    </div>
   </div>
 </div>
