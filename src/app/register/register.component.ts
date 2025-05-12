@@ -39,7 +39,12 @@ export class RegisterComponent {
   get email() {
     return this.loginForm.get('email') as FormControl;
   }
-  
+
+  /* 
+    Designed so that error messages are specific to the field throwing the information.
+    Otherwise using the mat-error on each field could occasionally show the wrong error message.
+    Current design shows error messages once the field are touched/dirty but later implementation may change this to onSubmit.
+  */
   getErrorMessageFor(controlName: string): string {
     const control = this.loginForm.get(controlName);
     if (!control) return '';

@@ -24,6 +24,11 @@ export class LoginComponent {
     return this.loginForm.get('password') as FormControl;
   }
 
+  /*
+    Currently a reused component from the register component. GetErrorMessageFor in this component
+    will eventually display messages based on attempted user logins. Both functions may eventually be 
+    consolidated into a shared one when a common utility component is created as the application grows. 
+  */
   getErrorMessageFor(controlName: string): string {
     const control = this.loginForm.get(controlName);
     if (!control) return '';
@@ -36,12 +41,6 @@ export class LoginComponent {
     }
     if (controlName === 'password' && control.hasError('minlength')) {
       return 'Password must be at least 6 characters long';
-    }
-    if (controlName === 'password' && control.hasError('pattern')) {
-      return 'Password must contain at least one uppercase letter, one lowercase letter, and one number';
-    }
-    if (controlName === 'email' && control.hasError('email')) {
-      return 'Not a valid email';
     }
     return '';
   }

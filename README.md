@@ -10,49 +10,29 @@ To start a local development server, run:
 ng serve
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+## Application Routing Notes
 
-## Code scaffolding
+Login Component is the initial page users will see when navigating to Bird-in-the-Hand. This is also the wildcard route for when a route match cannot be found. Login button routes users with an existing account directly to the Aviary component. Register button routes users to the Registration component. Successfully registering an account navigates new users to their Nest profile page. 
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+The Menu Bar is always present once logged in. This allows users to always navigate to the Nest or Aviary at will. They can also logout from here. Logging out of Bird-in-the-Hand returns users to the Login component.
 
-```bash
-ng generate component component-name
-```
+## Registration Field Validation
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+Current requirements for registering an account with Bird-in-the-Hand are as follows:
 
-```bash
-ng generate --help
-```
+Username: Required Field. Minimum username length is 3 characters.
 
-## Building
+Password: Required Field. Minimum password length is 6 characters. Passwords must contain at least one of each group: Uppercase, Lowercase, Number.
 
-To build the project run:
+Email: Required Field. Must pass pattern recognition as valid email.
 
-```bash
-ng build
-```
+## Login Field Validation
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+Not currently implemented. Login using any username/password combination you choose! Even using neither. You will always be logged in as the user Jane Featherstone.
 
-## Running unit tests
+## Models
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+All objects currently being used are located in the models folder and imported into components as needed. This keeps a central area for reference.
 
 ## Additional Resources
 

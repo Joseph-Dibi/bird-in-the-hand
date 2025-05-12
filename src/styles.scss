@@ -1,3 +1,17 @@
+/*
+  * Global styles for the application
+  * This file is used to define global styles and themes for the application.
+  * It includes custom theming for Angular Material, FontAwesome, and MDB Angular UI Kit.
+  * The styles are designed to create a warm fall color palette with a cinnamon brown background,
+  * pumpkin orange accents, and deep chestnut brown text.
+  * Mobile first design philosophy that includes responsive design adjustments for larger screens.
+  *
+  * Initially Planned as the sole style sheet for the application, the mass amount of ai generated styles
+  * cluttered up the file and made it difficult to parse out styling hierarchy when conflicts occurred.
+  * An attempt was made to clean up the styles by moving some into their respective component stylesheets
+  * and remove unused styles, however there is likely still random bits that need to be removed.
+  */
+
 // Custom Theming for Angular Material
 // For more information: https://material.angular.io/guide/theming
 @use "@angular/material" as mat;
@@ -18,7 +32,7 @@ html {
 $primary-color: #d2691e; /* Warm cinnamon brown */
 $secondary-color: #ff8c00; /* Vibrant pumpkin orange */
 $tertiary-color: #8b4513; /* Deep chestnut brown */
-$text-color: #fff8e7; /* Deep chestnut brown */
+$text-color: #fff8e7; /* Soft cream text */
 
 html,
 body {
@@ -27,11 +41,10 @@ body {
 body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
-  background-color: $primary-color; /* Cinnamon brown background */
-  color: $text-color; /* Soft cream text for contrast */
+  background-color: $primary-color;
+  color: $text-color; /* Light text color for contrast */
 }
 
-/* Begin Global Styles */
 :root {
   @include mat.button-overrides(
     (
@@ -42,7 +55,7 @@ body {
 }
 
 .mat-mdc-raised-button:not(:disabled) {
-  border-radius: 5px;
+  border-radius: 5px; /* Rounded corners */
   padding: 10px 20px;
   font-size: 1rem;
   text-transform: uppercase;
@@ -50,8 +63,8 @@ body {
   margin: 5%;
 
   &:not(:disabled) {
-    background-color: $secondary-color; /* Vibrant pumpkin orange */
-    color: $text-color; /* White text */
+    background-color: $secondary-color;
+    color: $text-color;
   }
 
   &:hover {
@@ -71,10 +84,6 @@ body {
 
 .login-form {
   padding: 5%;
-}
-
-.font-color {
-  color: $text-color !important; /* Soft cream text */
 }
 
 .card {
@@ -123,16 +132,16 @@ a {
 
 .bh-logo {
   display: block;
-  width: 35vw; /* Quarter of the viewport width */
-  max-width: 100%; /* Prevents overflow */
-  height: auto; /* Maintains aspect ratio */
+  width: 35vw;
+  max-width: 100%;
+  height: auto; 
 }
 
 .logo-container {
   display: flex;
   flex-direction: column;
-  align-items: center; /* Centers horizontally by default */
-  justify-content: flex-start; /* Aligns above center line */
+  align-items: center;
+  justify-content: flex-start;
   text-align: center;
   background-color: lighten($primary-color, 20%);
   border: 2px solid $tertiary-color;
@@ -151,8 +160,8 @@ a {
     margin: 5%;
 
     &:not(:disabled) {
-      background-color: $secondary-color; /* Vibrant pumpkin orange */
-      color: $text-color; /* White text */
+      background-color: $secondary-color;
+      color: $text-color;
     }
 
     &:hover {

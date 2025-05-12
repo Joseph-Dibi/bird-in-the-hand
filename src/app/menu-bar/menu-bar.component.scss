@@ -1,13 +1,13 @@
 @use "../../styles.scss" as *; // Import variables from styles.scss
 
 .menu-bar {
-  height: 10vh; /* Set height to 5% of viewport height */
+  height: 10vh; /* Menu Bar should occupy 10% of viewport height */
   display: flex;
   flex-direction: row;
   justify-content: space-around; /* Distribute items evenly */
   align-items: center; /* Center items vertically */
-  background-color: $tertiary-color; /* Warm cinnamon brown */
-  color: $text-color; /* Apply the soft cream text color */
+  background-color: $tertiary-color; 
+  color: $text-color; 
 }
 
 .logo {
@@ -16,15 +16,15 @@
 }
 
 h5 {
-  font-size: .7rem; /* Adjust font size as needed */
-  margin: 0; /* Remove default margin */
-  color: $text-color; /* Soft cream text */
+  font-size: .7rem;
+  margin: 0; 
+  color: $text-color; 
 }
 
 .small-logo {
   width: auto; /* Maintain aspect ratio */
-  height: 5vh; /* Adjust size as needed */
-  margin: 1vh; /* Add some margin */
+  height: 5vh; 
+  margin: 1vh;
   border-radius: 5px;
 }
 
@@ -33,12 +33,12 @@ h5 {
   .small-logo {
     margin-left: 5vh;
     width: auto; /* Maintain aspect ratio */
-    height: 10vh; /* Adjust size as needed */
+    height: 10vh;
   }
 
   h5 {
-  font-size: 1.5rem; /* Adjust font size as needed */
-  color: $text-color; /* Soft cream text */
+  font-size: 1.5rem;
+  color: $text-color;
   padding: 1vh;;
 }
 }

@@ -58,6 +58,6 @@ export class NestComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {
-    // Initialization logic here
+    // Initialization logic here. Will later be used to fetch the profile and photos from a backend API.
   }
 }

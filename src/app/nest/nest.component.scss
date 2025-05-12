@@ -6,8 +6,8 @@
   overflow-x: hidden; /* Hide horizontal overflow */
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
-  background-color: $primary-color; /* Cinnamon brown background */
-  color: $text-color; /* Soft cream text for contrast */
+  background-color: $primary-color; 
+  color: $text-color; 
 }
 
 .profile-header {
@@ -21,7 +21,7 @@
 .profile-picture {
   display: block;
   width: 20vw;
-  height: auto; /* Maintains aspect ratio */
+  height: auto;
   margin: 1vh;
   border-radius: 5px;
 }
@@ -125,7 +125,7 @@ h4 {
   .profile-picture {
     display: block;
     height: auto; /* Maintains aspect ratio */
-    max-width: 15vw; /* Adjust size for desktop */
+    max-width: 15vh; /* Adjust size for desktop */
 
     margin-left: 5%; /* Adds spacing from the left */
   }
@@ -137,17 +137,15 @@ h4 {
   .carousel-image {
     height: 40vh;
     object-fit: cover;
-    border-radius: 5px; /* Optional: Add rounded corners */
+    border-radius: 5px; /* Add rounded corners */
   }
 
   
 .carousel-control-next {
-  //   position: absolute;
   display: none;
 }
 
 .carousel-control-prev {
-  //   position: absolute;
   display: none;
 }
 
@@ -161,6 +159,6 @@ h4 {
 
   h1,
   h4 {
-    font-size: 1.5rem; /* Adjust font size for larger screens */
+    font-size: 1.5rem; 
   }
 }
