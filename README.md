@@ -34,6 +34,12 @@ Not currently implemented. Login using any username/password combination you cho
 
 All objects currently being used are located in the models folder and imported into components as needed. This keeps a central area for reference.
 
+## Github URL
+
+Located at:
+
+https://github.com/Joseph-Dibi/bird-in-the-hand
+
 ## Additional Resources
 
 For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
