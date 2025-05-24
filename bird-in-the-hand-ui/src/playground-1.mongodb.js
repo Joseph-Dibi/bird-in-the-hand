@@ -13,7 +13,9 @@
 use('bird-in-the-hand');
 db.users.createIndex( { "user_name": 1 }, { unique: true } )
 
-
+db.users.deleteMany({
+  user_name: { $nin: ["Jane Featherstone", "Birdman"] }
+});
 
 // Insert a few documents into the sales collection.
 db.getCollection('sales').insertMany([

@@ -19,7 +19,6 @@ export class BirdManagementService {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json'
     });
-    // return this.http.post('/api/login', credentials, { headers });
     return this.http.post<any>(`${this.birdActions}/login`, credentials, {headers});
   }
 
@@ -30,10 +29,13 @@ export class BirdManagementService {
     return this.http.post<any>(`${this.birdActions}/registration`, registration, { headers });
   }
 
-  getBirds(): Observable<any[]> {
-    return this.http.get<any>(`${this.baseUrl}`);
+  // getNestProfile(): Observable<any[]> {
+  //   return this.http.get<any>(`${this.baseUrl}/nest/${sessionStorage.getItem('username')}`);
+  // }
+  getNestProfile(): Observable<any[]> {
+    const username = sessionStorage.getItem('username');
+    return this.http.get<any[]>(`${this.baseUrl}/nest-profile/${username}`);
   }
-
   getBird(id: string): Observable<any> {
     return this.http.get<any>(`${this.baseUrl}/${id}`);
   }

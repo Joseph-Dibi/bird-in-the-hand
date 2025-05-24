@@ -6,6 +6,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { BirdManagementService } from '../bird-management.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -16,14 +17,18 @@ import { BirdManagementService } from '../bird-management.service';
 export class RegisterComponent {
   loginForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private birdManagementService: BirdManagementService) {
+  constructor(
+    private fb: FormBuilder,
+    private birdManagementService: BirdManagementService,
+    private router: Router
+  ) {
     this.loginForm = this.fb.group({
       username: ['', [Validators.required, Validators.minLength(3)]],
       password: [
         '',
         [
           Validators.required,
-          Validators.minLength(6),
+          Validators.minLength(4),
           Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$/),
         ],
       ],
@@ -57,7 +62,7 @@ export class RegisterComponent {
       return 'Username must be at least 3 characters long';
     }
     if (controlName === 'password' && control.hasError('minlength')) {
-      return 'Password must be at least 6 characters long';
+      return 'Password must be at least 4 characters long';
     }
     if (controlName === 'password' && control.hasError('pattern')) {
       return 'Password must contain at least one uppercase letter, one lowercase letter, and one number';
@@ -68,23 +73,32 @@ export class RegisterComponent {
     return '';
   }
 
-  onSubmit(): void {
+  onSubmit(event: Event): void {
+    event.preventDefault();
     // if (!this.loginForm.valid) {
-      const registration = {
-        username: this.username.value,
-        password: this.password.value,
-        email: this.email.value
-      };
-      console.log('submit');
-      this.birdManagementService.register(registration).subscribe({
-        next: (response) => {
+    const registration = {
+      username: this.username.value,
+      password: this.password.value,
+      email: this.email.value,
+    };
+    console.log('submit');
+    this.birdManagementService.register(registration).subscribe({
+      next: (response) => {
+        console.log(response);
+        if (response !== null) {
           console.log('Worked');
-          // handle successful login
-        },
-        error: (err) => {
-          // handle login error
+          sessionStorage.setItem('username', registration.username);
+          this.router.navigate(['/nest']);
+        } else {
+          this.loginForm.setErrors({ registrationFailed: true });
         }
-      });
-    }
+      },
+      error: (err) => {
+        // handle login error
+        console.log('Failed');
+        this.loginForm.setErrors({ registrationFailed: true });
+      },
+    });
+  }
   // }
 }

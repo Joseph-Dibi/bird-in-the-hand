@@ -28,16 +28,15 @@
           <mat-error *ngIf="email.touched && email.dirty && email.invalid">{{ getErrorMessageFor('email') }}</mat-error>
         </mat-form-field>
       </span>
+        <mat-error *ngIf="loginForm.hasError('registrationFailed')">Username must be unique, please try again.</mat-error>
       <span>
         <button mat-raised-button routerLink="/login">Cancel</button>
         <button
           mat-raised-button
           type="submit"
           class="btn btn-primary"
-          routerLink="/nest"
           [disabled]="loginForm.invalid"
-          (click)="onSubmit()"
-        >
+          (click)="onSubmit($event)">
           Register
         </button>
       </span>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AviaryPhoto, NestProfile } from '../models/models';
+import { BirdManagementService } from '../bird-management.service';
 
 @Component({
   selector: 'app-nest',
@@ -55,9 +56,20 @@ export class NestComponent implements OnInit {
   onSliderChange(event: any): void {
     this.currentIndex = event.value;
   }
-  constructor() {}
+  constructor(private birdManagementService: BirdManagementService) {}
 
   ngOnInit(): void {
-    // Initialization logic here. Will later be used to fetch the profile and photos from a backend API.
+    // this.birdManagementService.getNestProfile().subscribe({
+    //   next: (response) => {
+    //     if (response) {
+    //       // this.profile = response;
+    //     } else {
+    //       console.log('No profile data found');
+    //     }
+    //   },
+    //   error: (err) => {
+    //     console.error('Error fetching profile:', err);
+    //   }
+    // });
   }
 }

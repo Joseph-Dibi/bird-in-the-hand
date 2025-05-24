@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import com.bird.hand.dto.User;
 
+
 @Service
 public class BirdInTheHandService {
 
@@ -19,26 +20,45 @@ public class BirdInTheHandService {
 	private MongoTemplate mongoTemplate;
 	private static final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 
-	public void login(String username, String password) {
-//		Document query = new Document("username", username).append("password", password);
-		Query query = new Query();
-		query.addCriteria(Criteria.where("username").is(username).and("password").is(hashPassword(password)));
-		List<User> user = mongoTemplate.find(query, User.class);
+	public User login(String username, String password) {
+	    Query query = new Query();
+	    query.addCriteria(Criteria.where("username").is(username));
+	    List<User> users = mongoTemplate.find(query, User.class, "users");
+	    try {
+	        if (users != null && !users.isEmpty() && verifyPassword(password, users.get(0).getPassword())) {
+	        	users.get(0).setPassword(null); // Clear password before returning.
+	            return users.get(0);
+	        } else {
+		        System.out.println("Invalid username or password.");
+		        throw new RuntimeException("Error during password verification.");
 
-		if (user != null) {
-			System.out.println("Authentication successful!");
-		} else {
-			System.out.println("Invalid username or password.");
-		}
+	        }
+	    } catch (Exception e) {
+	        System.out.println("Error during password verification: " + e.getMessage());
+	        throw new RuntimeException("Login failed: Invalid username or password.");
+	    }
+
+	    
 	}
 
-	public void register(String username, String password, String email) {
+	public User register(String username, String password, String email) {
 
 		// Here you would typically save the user to the database
 		// For example:
-		Document userDoc = new Document("username", username).append("password", hashPassword(password)).append("email",
-				email);
-		mongoTemplate.insert(userDoc, "users");
+		try {
+			Document userDoc = new Document("username", username).append("password", hashPassword(password)).append("email",
+					email);
+			mongoTemplate.insert(userDoc, "users");
+			System.out.println("User Doc Successfully Inserted.");
+			User user = new User();
+			user.setUsername(username);
+			user.setEmail(email);
+			return user;
+		} catch (Exception e) {
+			System.out.println("User Doc Failed to Insert.");
+			e.printStackTrace();
+			return null;
+		}
 	}
 
 	public static String hashPassword(String password) {
@@ -47,6 +67,11 @@ public class BirdInTheHandService {
 
 	public static boolean verifyPassword(String password, String hashedPassword) {
 		return encoder.matches(password, hashedPassword);
+	}
+
+	public String nestPage(String username) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 //	public String exampleServiceMethod() {

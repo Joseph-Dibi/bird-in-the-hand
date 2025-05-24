@@ -23,8 +23,9 @@
           <mat-error *ngIf="password.touched && password.dirty && password.invalid">{{ getErrorMessageFor('password') }}</mat-error>
         </mat-form-field>
       </span>
+      <mat-error *ngIf="loginForm.hasError('loginFailed')">Invalid Username and/or Password</mat-error>
       <span>
-        <button mat-raised-button (click)="onSubmit()" routerLink="/aviary">
+        <button mat-raised-button (click)="onSubmit()" [disabled]="loginForm.invalid">
           Login
         </button>
         <button mat-raised-button routerLink="/register">
