@@ -11,10 +11,10 @@
         <button mat-raised-button id="change-profile-picture">Change</button>
       </div>
       <div class="profile-name-section">
-        <h1 class="profile-name">The Nest of {{ profile.profileName }}</h1>
+        <h1 class="profile-name">The Nest of {{ profile.username }}</h1>
         <h4 class="profile-name">
           Flocking with us since
-          {{ profile.memberSince | date : "dd MMMM yyyy" }}
+          {{ profile.memberSince | date : "MMMM dd yyyy" }}
         </h4>
       </div>
     </div>

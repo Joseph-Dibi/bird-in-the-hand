@@ -55,7 +55,7 @@ public class BirdInTheHandController {
 	}
 	
 	@GetMapping(BASE_URL + "/nest-profile")
-	public String registration(HttpServletRequest request, @Param("username") String username) {
+	public User returnNestProfile(HttpServletRequest request, @Param("username") String username) {
 		
 	    return this.birdInTheHandService.nestPage(username);
 	}

@@ -47,7 +47,7 @@ public class BirdInTheHandService {
 		// For example:
 		try {
 			Document userDoc = new Document("username", username).append("password", hashPassword(password)).append("email",
-					email);
+					email).append("memberSince", java.time.Instant.now());
 			mongoTemplate.insert(userDoc, "users");
 			System.out.println("User Doc Successfully Inserted.");
 			User user = new User();
@@ -69,9 +69,20 @@ public class BirdInTheHandService {
 		return encoder.matches(password, hashedPassword);
 	}
 
-	public String nestPage(String username) {
-		// TODO Auto-generated method stub
-		return null;
+	public User nestPage(String username) {
+	    Query query = new Query();
+	    query.addCriteria(Criteria.where("username").is(username));
+	    List<User> users = mongoTemplate.find(query, User.class, "users");
+
+	    try {
+	    	System.out.println("Found User");
+			return users.get(0);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
+	
 	}
 
 //	public String exampleServiceMethod() {

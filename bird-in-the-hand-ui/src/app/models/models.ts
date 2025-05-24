@@ -1,6 +1,6 @@
 export interface NestProfile {
   id: number;
-  profileName: string;
+  username: string;
   profilePicture: string;
   description: string;
   location: string;
@@ -21,7 +21,7 @@ export interface AviaryPhoto {
 
 export interface Comment {
   id: number;
-  profileName: string;
+  username: string;
   profilePicture: string;
   text: string;
 }

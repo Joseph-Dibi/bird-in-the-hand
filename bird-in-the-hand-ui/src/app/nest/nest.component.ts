@@ -44,7 +44,7 @@ export class NestComponent implements OnInit {
 
   profile: NestProfile = {
     id: 1,
-    profileName: 'Jane Featherstone',
+    username: 'Jane Featherstone',
     profilePicture: 'assets/icons/jane-featherstone.jpg',
     description: 'A passionate bird photographer and conservationist.',
     location: 'Cape Town, South Africa',
@@ -59,17 +59,18 @@ export class NestComponent implements OnInit {
   constructor(private birdManagementService: BirdManagementService) {}
 
   ngOnInit(): void {
-    // this.birdManagementService.getNestProfile().subscribe({
-    //   next: (response) => {
-    //     if (response) {
-    //       // this.profile = response;
-    //     } else {
-    //       console.log('No profile data found');
-    //     }
-    //   },
-    //   error: (err) => {
-    //     console.error('Error fetching profile:', err);
-    //   }
-    // });
+    this.birdManagementService.getNestProfile().subscribe({
+      next: (response) => {
+        if (response) {
+          this.profile.username = response.username;
+          this.profile.memberSince = response.memberSince;
+        } else {
+          console.log('No profile data found');
+        }
+      },
+      error: (err) => {
+        console.error('Error fetching profile:', err);
+      },
+    });
   }
 }

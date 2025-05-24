@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Registration } from './models/models';
+import { NestProfile, Registration } from './models/models';
 
 @Injectable({
   providedIn: 'root',
@@ -32,9 +32,11 @@ export class BirdManagementService {
   // getNestProfile(): Observable<any[]> {
   //   return this.http.get<any>(`${this.baseUrl}/nest/${sessionStorage.getItem('username')}`);
   // }
-  getNestProfile(): Observable<any[]> {
-    const username = sessionStorage.getItem('username');
-    return this.http.get<any[]>(`${this.baseUrl}/nest-profile/${username}`);
+  getNestProfile(): Observable<NestProfile> {
+    const username = sessionStorage.getItem('username') ?? '';
+    let params = new HttpParams()
+      .set('username', username);
+    return this.http.get<NestProfile>(`${this.birdActions}/nest-profile`, { params });
   }
   getBird(id: string): Observable<any> {
     return this.http.get<any>(`${this.baseUrl}/${id}`);
