@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators, FormControl, FormGroup } from '@angular/forms';
+import { BirdManagementService } from '../bird-management.service';
 
 @Component({
   selector: 'app-login',
@@ -10,13 +11,29 @@ import { FormBuilder, Validators, FormControl, FormGroup } from '@angular/forms'
 export class LoginComponent {
   loginForm: FormGroup;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private birdManagementService: BirdManagementService) {
     this.loginForm = this.fb.group({
       username: ['', [Validators.required]],
       password: ['', [Validators.required]],
     });
   }
-
+  onSubmit(): void {
+    // if (!this.loginForm.valid) {
+      const credentials = {
+        username: this.username.value,
+        password: this.password.value
+      };
+      this.birdManagementService.login(credentials).subscribe({
+        next: (response) => {
+          console.log('Worked');
+          // handle successful login
+        },
+        error: (err) => {
+          // handle login error
+        }
+      });
+    // }
+  }
   get username(): FormControl {
     return this.loginForm.get('username') as FormControl;
   }

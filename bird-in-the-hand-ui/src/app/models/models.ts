@@ -25,3 +25,9 @@ export interface Comment {
   profilePicture: string;
   text: string;
 }
+
+export interface Registration {
+  username: string;
+  password: string;
+  email: string;
+}

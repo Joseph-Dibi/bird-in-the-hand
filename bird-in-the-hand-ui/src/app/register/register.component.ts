@@ -5,6 +5,7 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
+import { BirdManagementService } from '../bird-management.service';
 
 @Component({
   selector: 'app-register',
@@ -15,7 +16,7 @@ import {
 export class RegisterComponent {
   loginForm: FormGroup;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private birdManagementService: BirdManagementService) {
     this.loginForm = this.fb.group({
       username: ['', [Validators.required, Validators.minLength(3)]],
       password: [
@@ -68,10 +69,22 @@ export class RegisterComponent {
   }
 
   onSubmit(): void {
-    if (this.loginForm.valid) {
-      console.log('Form Submitted', this.loginForm.value);
-    } else {
-      console.log('Form is invalid');
+    // if (!this.loginForm.valid) {
+      const registration = {
+        username: this.username.value,
+        password: this.password.value,
+        email: this.email.value
+      };
+      console.log('submit');
+      this.birdManagementService.register(registration).subscribe({
+        next: (response) => {
+          console.log('Worked');
+          // handle successful login
+        },
+        error: (err) => {
+          // handle login error
+        }
+      });
     }
-  }
+  // }
 }
