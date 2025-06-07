@@ -12,7 +12,7 @@ import { BirdManagementService } from '../bird-management.service';
 export class AviaryComponent implements OnInit {
 
   dataSource = new MatTableDataSource<AviaryPhoto>();
-  displayedColumns: string[] = ['photo', 'information', 'vote'];
+  displayedColumns: string[] = ['photo'];
 
   constructor(private birdManagementService: BirdManagementService) {
 

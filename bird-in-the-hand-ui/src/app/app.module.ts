@@ -16,6 +16,7 @@ import {
 } from '@angular/forms';
 import { BirdManagementService } from './bird-management.service';
 import { MDBModule } from './mdbModule.module';
+import { DetailViewComponent } from './detail-view/detail-view.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,6 +25,7 @@ import { MDBModule } from './mdbModule.module';
     NestComponent,
     MenuBarComponent,
     RegisterComponent,
+    DetailViewComponent
   ],
   imports: [
     BrowserModule,

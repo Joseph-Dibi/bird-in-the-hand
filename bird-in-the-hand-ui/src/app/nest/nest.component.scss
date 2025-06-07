@@ -6,8 +6,8 @@
   overflow-x: hidden; /* Hide horizontal overflow */
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
-  background-color: $primary-color; 
-  color: $text-color; 
+  background-color: $primary-color;
+  color: $text-color;
 }
 
 .profile-header {
@@ -135,30 +135,36 @@ h4 {
   }
 
   .carousel-image {
-    height: 40vh;
+    height: 35vh;
     object-fit: cover;
     border-radius: 5px; /* Add rounded corners */
   }
 
-  
-.carousel-control-next {
-  display: none;
-}
-
-.carousel-control-prev {
-  display: none;
-}
-
-  .carousel-control-prev.custom-control {
-    left: -25vh; /* adjust based on item padding/margins */
+  .carousel-control-next {
+    display: none;
+    
   }
 
-  .carousel-control-next.custom-control {
-    right: -25vh; /* adjust based on item padding/margins */
+  .carousel-control-prev {
+    display: none;
   }
+
+  //  button.carousel-control-prev.custom-control {
+  //   left: -25vh; /* adjust based on item padding/margins */
+  // }
+
+  // button.carousel-control-next.custom-control {
+  //   right: -25vh; /* adjust based on item padding/margins */
+  // }
 
   h1,
   h4 {
-    font-size: 1.5rem; 
+    font-size: 1.5rem;
+  }
+
+  .nest-icon {
+    display: block;
+    width: 40vw;
+    height: auto;
   }
 }
