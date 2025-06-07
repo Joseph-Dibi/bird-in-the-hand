@@ -17,6 +17,7 @@ export interface AviaryPhoto {
   author: string;
   comments: Comment[];
   public: boolean;
+  reports?: number;
 }
 
 export interface Comment {

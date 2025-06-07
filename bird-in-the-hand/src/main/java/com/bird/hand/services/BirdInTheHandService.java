@@ -10,6 +10,7 @@ import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.bird.hand.dto.PhotoLibrary;
 import com.bird.hand.dto.User;
 
 
@@ -83,6 +84,42 @@ public class BirdInTheHandService {
 			return null;
 		}
 	
+	}
+
+	public User report(String username, String password, String email) {
+
+			// Here you would typically save the user to the database
+			// For example:
+			try {
+				Document userDoc = new Document("username", username).append("password", hashPassword(password)).append("email",
+						email).append("memberSince", java.time.Instant.now());
+				mongoTemplate.insert(userDoc, "users");
+				System.out.println("User Doc Successfully Inserted.");
+				User user = new User();
+				user.setUsername(username);
+				user.setEmail(email);
+				return user;
+			} catch (Exception e) {
+				System.out.println("User Doc Failed to Insert.");
+				e.printStackTrace();
+				return null;
+			}
+	}
+
+
+	public List<PhotoLibrary> returnAviaryPhotos() {
+	    Query query = new Query();
+	    query.addCriteria(Criteria.where("public").is(true));
+	    List<PhotoLibrary> aviaryPhotos = mongoTemplate.find(query, PhotoLibrary.class, "photo_library");
+
+	    try {
+	    	System.out.println("Found User");
+			return aviaryPhotos;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
 	}
 
 //	public String exampleServiceMethod() {

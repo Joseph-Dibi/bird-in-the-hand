@@ -19,7 +19,7 @@ export class NestComponent implements OnInit {
       author: 'Jane Featherstone',
       comments: [],
       public: false,
-    },
+   },
     {
       id: 4,
       title: 'Better Village Weaver',

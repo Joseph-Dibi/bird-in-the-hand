@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AviaryPhoto } from '../models/models';
 import { MatTableDataSource } from '@angular/material/table';
+import { BirdManagementService } from '../bird-management.service';
 
 @Component({
   selector: 'app-aviary',
@@ -11,90 +12,12 @@ import { MatTableDataSource } from '@angular/material/table';
 export class AviaryComponent implements OnInit {
 
   dataSource = new MatTableDataSource<AviaryPhoto>();
-  displayedColumns: string[] = ['photo', 'information'];
-  aviaryPhotoList: AviaryPhoto[] = [
-    {
-      id: 1,
-      title: 'Blue-Black Grassquit',
-      photo: 'assets/birds/blue-black-grassquit.jpg',
-      votes: 120,
-      uploadDate: '2025-05-01',
-      author: 'John Bird',
-      comments: [],
-      public: true,
-    },
-    {
-      id: 2,
-      title: 'Village Weaver', 
-      photo: 'assets/birds/village-weaver1.jpg',
-      votes: 95,
-      uploadDate: '2025-05-03',
-      author: 'Jane Featherstone',
-      comments: [],
-      public: true,
-    },
-    {
-      id: 3,
-      title: 'Lilac-Breasted Roller',
-      photo: 'assets/birds/lilac-breasted-roller.jpg',
-      votes: 150,
-      uploadDate: '2025-05-05',
-      author: 'Alice Nestington',
-      comments: [],
-      public: true,
-    },
-    {
-      id: 4,
-      title: 'Better Village Weaver',
-      photo: 'assets/birds/village-weaver2.jpg',
-      votes: 200,
-      uploadDate: '2025-05-07',
-      author: 'Jane Featherstone',
-      comments: [],
-      public: true,
-    },
-    {
-      id: 5,
-      title: 'Golden Pheasant',
-      photo: 'assets/birds/lesser-spotted-eagle.jpg',
-      votes: 180,
-      uploadDate: '2025-05-09',
-      author: 'Michael Beakman',
-      comments: [],
-      public: true,
-    },
-    {
-      id: 6,
-      title: 'Toucan',
-      photo: 'assets/birds/brown-hooded-kingfisher.jpg',
-      votes: 170,
-      uploadDate: '2025-05-11',
-      author: 'Sarah Talon',
-      comments: [],
-      public: true,
-    },
-    {
-      id: 7,
-      title: 'Crested Barbet',
-      photo: 'assets/birds/crested-barbet.jpg',
-      votes: 190,
-      uploadDate: '2025-05-13',
-      author: 'Chris Flock',
-      comments: [],
-      public: true,
-    },
-    {
-      id: 7,
-      title: 'Crested Barbet',
-      photo: 'assets/birds/big-bird.jpg',
-      votes: 190,
-      uploadDate: '2025-05-13',
-      author: 'Sarah Talon',
-      comments: [],
-      public: true,
-    },
-  ];
+  displayedColumns: string[] = ['photo', 'information', 'vote'];
 
+  constructor(private birdManagementService: BirdManagementService) {
+
+
+  }
   ngOnInit(): void {
     /*
       The data source is set to the aviaryPhotoList array, which contains the list of photos.
@@ -103,6 +26,8 @@ export class AviaryComponent implements OnInit {
       the data source will be set to the result of the API call to fetch the photos. There may be a later need to override
       the default features of the MatTableDataSource to add custom sorting or filtering logic.
     */
-    this.dataSource = new MatTableDataSource(this.aviaryPhotoList);
+    this.birdManagementService.getAviaryPhotos().subscribe((photos: AviaryPhoto[]) => {
+      this.dataSource = new MatTableDataSource(photos);
+    });
   }
 }

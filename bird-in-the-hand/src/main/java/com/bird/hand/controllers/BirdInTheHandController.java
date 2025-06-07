@@ -1,13 +1,15 @@
 package com.bird.hand.controllers;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.bird.hand.dto.PhotoLibrary;
 import com.bird.hand.dto.RegisterDTO;
 import com.bird.hand.dto.User;
 import com.bird.hand.services.BirdInTheHandService;
@@ -54,10 +56,42 @@ public class BirdInTheHandController {
 		}
 	}
 	
+	@PostMapping(BASE_URL + "/report")
+	public User report(HttpServletRequest request, @RequestBody RegisterDTO credentials) {
+		String username = credentials.getUsername();
+		String password = credentials.getPassword();
+		String email = credentials.getEmail();
+		try {
+			return birdInTheHandService.report(username, password, email);
+		} catch (Exception e) {
+			System.out.println("Registration failed: " + e.getMessage());
+			return null;
+		}
+	}
+	
+	@PostMapping(BASE_URL + "/vote")
+	public User vote(HttpServletRequest request, @RequestBody RegisterDTO credentials) {
+		String username = credentials.getUsername();
+		String password = credentials.getPassword();
+		String email = credentials.getEmail();
+		try {
+			return birdInTheHandService.register(username, password, email);
+		} catch (Exception e) {
+			System.out.println("Registration failed: " + e.getMessage());
+			return null;
+		}
+	}
+	
 	@GetMapping(BASE_URL + "/nest-profile")
 	public User returnNestProfile(HttpServletRequest request, @Param("username") String username) {
 		
 	    return this.birdInTheHandService.nestPage(username);
+	}
+	
+	@GetMapping(BASE_URL + "/aviary-photos")
+	public List<PhotoLibrary> returnAviaryPhotos(HttpServletRequest request) {
+		
+		return this.birdInTheHandService.returnAviaryPhotos();
 	}
 	
 	

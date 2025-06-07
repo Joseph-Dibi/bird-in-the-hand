@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { NestProfile, Registration } from './models/models';
+import { AviaryPhoto, NestProfile, Registration } from './models/models';
 
 @Injectable({
   providedIn: 'root',
@@ -38,6 +38,11 @@ export class BirdManagementService {
       .set('username', username);
     return this.http.get<NestProfile>(`${this.birdActions}/nest-profile`, { params });
   }
+  
+  getAviaryPhotos(): Observable<AviaryPhoto[]> {
+    return this.http.get<AviaryPhoto[]>(`${this.birdActions}/aviary-photos`);
+  }
+
   getBird(id: string): Observable<any> {
     return this.http.get<any>(`${this.baseUrl}/${id}`);
   }
