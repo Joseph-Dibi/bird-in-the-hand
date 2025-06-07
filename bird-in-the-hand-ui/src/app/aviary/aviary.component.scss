@@ -34,6 +34,9 @@
     max-width: 85%;
     object-fit: cover; /* Ensure the image fits nicely within the row */
     border-radius: 5px; /* Optional: Add rounded corners */
+    border-radius: 5px; /* Optional: Add rounded corners */
+    border-color: black; /* Optional: Add a border to the image */
+    border-width: 1px; /* Optional: Set the border width */
   }
 
   .table-rows {
@@ -71,7 +74,6 @@ td.mat-cell {
 tr {
   border: 1px solid $tertiary-color; /* Use the website's border theme color */
 }
-
 
 th.mat-header-cell {
   font-weight: bold;
@@ -116,6 +118,9 @@ h4 {
       max-width: 35%;
       object-fit: cover; /* Ensure the image fits nicely within the row */
       border-radius: 5px; /* Optional: Add rounded corners */
+      border-color: $tertiary-color; /* Optional: Add a border to the image */
+      border-width: .5vh; /* Optional: Set the border width */
+      border-style: solid;
     }
 
     .table-rows {

@@ -16,15 +16,25 @@
         <span class="flex-column">
           <h4>{{ element.title }}</h4>
           <img
-            class="list-image"
             [src]="element.photo"
-            alt="{{element.title}}"
+            alt="{{ element.title }}"
             class="table-image"
             (click)="openPhotoDetailDialog(element)"
           />
-          <span class="flex-row"><img class="vote-icon" src="assets/icons/vote-icon.png" alt="Bird Vote Icon" /> <h4 class="vote-text">Flock: {{ element.votes }}</h4></span> 
+          <span class="flex-row"
+            ><img
+              class="vote-icon"
+              src="assets/icons/vote-icon.png"
+              alt="Bird Vote Icon"
+              (click)="voteForPhoto(element)"
+            />
+            <h4 class="vote-text">Flock: {{ element.votes }}</h4></span
+          >
           <span class="flex-row info-text">
-            <p>{{ element.author }}, {{ element.uploadDate | date : "MMMM dd yyyy" }}</p>
+            <p>
+              {{ element.author }},
+              {{ element.uploadDate | date : "MMMM dd yyyy" }}
+            </p>
           </span>
         </span>
       </td>
