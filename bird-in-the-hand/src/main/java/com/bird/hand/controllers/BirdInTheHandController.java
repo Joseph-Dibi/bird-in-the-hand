@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.bird.hand.dto.PhotoLibrary;
 import com.bird.hand.dto.RegisterDTO;
 import com.bird.hand.dto.User;
+import com.bird.hand.dto.Vote;
 import com.bird.hand.services.BirdInTheHandService;
 
 import jakarta.servlet.http.HttpServletRequest;
@@ -64,23 +65,28 @@ public class BirdInTheHandController {
 		try {
 			return birdInTheHandService.report(username, password, email);
 		} catch (Exception e) {
-			System.out.println("Registration failed: " + e.getMessage());
+			System.out.println("Report failed: " + e.getMessage());
 			return null;
 		}
 	}
 	
 	@PostMapping(BASE_URL + "/vote")
-	public User vote(HttpServletRequest request, @RequestBody RegisterDTO credentials) {
-		String username = credentials.getUsername();
-		String password = credentials.getPassword();
-		String email = credentials.getEmail();
+	public Vote vote(HttpServletRequest request, @RequestBody Vote vote) {
+
 		try {
-			return birdInTheHandService.register(username, password, email);
+			return birdInTheHandService.vote(vote.getUsername(), vote.getAviaryPhoto());
 		} catch (Exception e) {
-			System.out.println("Registration failed: " + e.getMessage());
+			System.out.println("Voting failed: " + e.getMessage());
 			return null;
 		}
 	}
+	
+	@GetMapping(BASE_URL + "/vote-list")
+	public List<Vote> returnVotesList(HttpServletRequest request, @Param("username") String username) {
+		
+		return this.birdInTheHandService.retrieveVotes(username);
+	}
+	
 	
 	@GetMapping(BASE_URL + "/nest-profile")
 	public User returnNestProfile(HttpServletRequest request, @Param("username") String username) {
@@ -89,9 +95,9 @@ public class BirdInTheHandController {
 	}
 	
 	@GetMapping(BASE_URL + "/aviary-photos")
-	public List<PhotoLibrary> returnAviaryPhotos(HttpServletRequest request) {
+	public List<PhotoLibrary> returnAviaryPhotos(HttpServletRequest request, @Param("username") String username) {
 		
-		return this.birdInTheHandService.returnAviaryPhotos();
+		return this.birdInTheHandService.returnAviaryPhotos(username);
 	}
 	
 	

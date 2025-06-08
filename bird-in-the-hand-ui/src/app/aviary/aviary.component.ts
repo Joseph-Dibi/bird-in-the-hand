@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AviaryPhoto } from '../models/models';
+import { Vote } from '../models/models';
 import { MatTableDataSource } from '@angular/material/table';
 import { BirdManagementService } from '../bird-management.service';
 import { MatDialog } from '@angular/material/dialog';
@@ -31,16 +32,16 @@ export class AviaryComponent implements OnInit {
     this.birdManagementService
       .getAviaryPhotos()
       .subscribe((photos: AviaryPhoto[]) => {
-        this.dataSource = new MatTableDataSource(photos);
+        const sortedPhotos = photos.sort((a, b) => (b.votes ?? 0) - (a.votes ?? 0));
+        this.dataSource = new MatTableDataSource(sortedPhotos);
       });
   }
 
   openPhotoDetailDialog(aviaryPhoto: AviaryPhoto) {
     const dialogRef = this.dialog.open(AviaryDetailViewComponent, {
-      width: '100vw',
-      maxWidth: '100vw',
-      height: '100vh',
-      panelClass: 'full-screen-modal',
+      width: '60vw',
+      maxWidth: '60vw',
+      height: '60vh',
       data: aviaryPhoto,
     });
 
@@ -49,5 +50,17 @@ export class AviaryComponent implements OnInit {
     });
   }
 
-  voteForPhoto(aviaryPhoto: AviaryPhoto) {}
+  voteForPhoto(aviaryPhoto: AviaryPhoto) {
+    let vote = {
+      username: sessionStorage.getItem('username') ?? '',
+      aviaryPhoto: aviaryPhoto.photo,
+
+    };
+    console.log(aviaryPhoto)
+        this.birdManagementService
+      .voteForAviaryPhoto(vote)
+      .subscribe((vote: Vote) => {
+        aviaryPhoto.votes += 1;
+      });
+  }
 }

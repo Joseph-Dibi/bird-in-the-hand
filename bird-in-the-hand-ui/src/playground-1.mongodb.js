@@ -5,7 +5,7 @@ db.photo_library.insertMany([
   {
     title: 'Blue-Black Grassquit',
     photo: 'assets/birds/blue-black-grassquit.jpg',
-    votes: 120,
+    votes: 0,
     uploadDate: new Date('2025-05-01'),
     author: 'John Bird',
     comments: [
@@ -28,7 +28,7 @@ db.photo_library.insertMany([
   {
     title: 'Village Weaver',
     photo: 'assets/birds/village-weaver1.jpg',
-    votes: 95,
+    votes: 0,
     uploadDate: new Date('2025-05-03'),
     author: 'Jane Featherstone',
     comments: [
@@ -51,7 +51,7 @@ db.photo_library.insertMany([
   {
     title: 'Lilac-Breasted Roller',
     photo: 'assets/birds/lilac-breasted-roller.jpg',
-    votes: 150,
+    votes: 0,
     uploadDate: new Date('2025-05-05'),
     author: 'Alice Nestington',
     comments: [
@@ -64,7 +64,7 @@ db.photo_library.insertMany([
       {
         username: 'Alice Nestington',
         date: new Date('2025-05-06'),
-        profilePicture: 'assets/icons/profilepic2.png',
+        profilePicture: 'assets/icons/profilepic2.jpg',
         text: "Thank you, Sarah! This roller really knows how to show off its plumage."
       }
     ],
@@ -74,7 +74,7 @@ db.photo_library.insertMany([
   {
     title: 'Better Village Weaver',
     photo: 'assets/birds/village-weaver2.jpg',
-    votes: 200,
+    votes: 0,
     uploadDate: new Date('2025-05-07'),
     author: 'Jane Featherstone',
     comments: [
@@ -97,14 +97,14 @@ db.photo_library.insertMany([
   {
     title: 'Golden Pheasant',
     photo: 'assets/birds/lesser-spotted-eagle.jpg',
-    votes: 180,
+    votes: 0,
     uploadDate: new Date('2025-05-09'),
     author: 'Michael Beakman',
     comments: [
       {
         username: 'Alice Nestington',
         date: new Date('2025-05-10'),
-        profilePicture: 'assets/icons/profilepic2.png',
+        profilePicture: 'assets/icons/profilepic2.jpg',
         text: "That plumage is pure gold! What a majestic bird."
       },
       {
@@ -120,7 +120,7 @@ db.photo_library.insertMany([
   {
     title: 'Toucan',
     photo: 'assets/birds/brown-hooded-kingfisher.jpg',
-    votes: 170,
+    votes: 0,
     uploadDate: new Date('2025-05-11'),
     author: 'Sarah Talon',
     comments: [
@@ -150,7 +150,7 @@ db.photo_library.insertMany([
   {
     title: 'Crested Barbet',
     photo: 'assets/birds/crested-barbet.jpg',
-    votes: 190,
+    votes: 0,
     uploadDate: new Date('2025-05-13'),
     author: 'Chris Flock',
     comments: [
@@ -173,14 +173,14 @@ db.photo_library.insertMany([
   {
     title: 'Crested Barbet',
     photo: 'assets/birds/big-bird.jpg',
-    votes: 190,
+    votes: 0,
     uploadDate: new Date('2025-05-13'),
     author: 'Sarah Talon',
     comments: [
       {
         username: 'Michael Beakman',
         date: new Date('2025-05-14'),
-        profilePicture: 'assets/icons/profilepic2.png',
+        profilePicture: 'assets/icons/profilepic2.jpg',
         text: "What a bold bird! That crest is the envy of the flock."
       },
       {

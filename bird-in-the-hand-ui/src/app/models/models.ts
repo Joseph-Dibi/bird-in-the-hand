@@ -28,6 +28,11 @@ export interface Comment {
   text: string;
 }
 
+export interface Vote {
+  username: string;
+  aviaryPhoto: string;
+}
+
 export interface Registration {
   username: string;
   password: string;

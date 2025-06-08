@@ -1,32 +1,35 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { AviaryPhoto, NestProfile, Registration } from './models/models';
+import { AviaryPhoto, NestProfile, Registration, Vote } from './models/models';
 
 @Injectable({
   providedIn: 'root',
 })
 export class BirdManagementService {
-
-
   private baseUrl = 'http://localhost:8080';
   private birdActions = '/bird-in-the-hand';
 
-
   constructor(private http: HttpClient) {}
 
-  login(credentials: { username: any; password: any; }) {
+  login(credentials: { username: any; password: any }) {
     const headers = new HttpHeaders({
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
     });
-    return this.http.post<any>(`${this.birdActions}/login`, credentials, {headers});
+    return this.http.post<any>(`${this.birdActions}/login`, credentials, {
+      headers,
+    });
   }
 
   register(registration: Registration): Observable<any> {
     const headers = new HttpHeaders({
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
     });
-    return this.http.post<any>(`${this.birdActions}/registration`, registration, { headers });
+    return this.http.post<any>(
+      `${this.birdActions}/registration`,
+      registration,
+      { headers }
+    );
   }
 
   // getNestProfile(): Observable<any[]> {
@@ -34,22 +37,29 @@ export class BirdManagementService {
   // }
   getNestProfile(): Observable<NestProfile> {
     const username = sessionStorage.getItem('username') ?? '';
-    let params = new HttpParams()
-      .set('username', username);
-    return this.http.get<NestProfile>(`${this.birdActions}/nest-profile`, { params });
+    let params = new HttpParams().set('username', username);
+    return this.http.get<NestProfile>(`${this.birdActions}/nest-profile`, {
+      params,
+    });
   }
-  
+
   getAviaryPhotos(): Observable<AviaryPhoto[]> {
-    return this.http.get<AviaryPhoto[]>(`${this.birdActions}/aviary-photos`);
+    const username = sessionStorage.getItem('username') ?? '';
+    let params = new HttpParams().set('username', username);
+    return this.http.get<AviaryPhoto[]>(`${this.birdActions}/aviary-photos`, { params });
   }
 
-  getBird(id: string): Observable<any> {
-    return this.http.get<any>(`${this.baseUrl}/${id}`);
+  getVoteList(id: string): Observable<any> {
+    const username = sessionStorage.getItem('username') ?? '';
+    let params = new HttpParams().set('username', username);
+    return this.http.get<any>(`${this.birdActions}/vote-list`, { params });
   }
 
-
-  createBird(bird: any): Observable<any> {
-    return this.http.post<any>(`${this.baseUrl}`, bird);
+  voteForAviaryPhoto(vote: Vote): Observable<any> {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+    });
+    return this.http.post<any>(`${this.birdActions}/vote`, vote, { headers });
   }
 
   updateBird(id: string, bird: any): Observable<any> {

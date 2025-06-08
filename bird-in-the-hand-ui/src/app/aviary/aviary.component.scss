@@ -34,9 +34,9 @@
     max-width: 85%;
     object-fit: cover; /* Ensure the image fits nicely within the row */
     border-radius: 5px; /* Optional: Add rounded corners */
-    border-radius: 5px; /* Optional: Add rounded corners */
     border-color: black; /* Optional: Add a border to the image */
     border-width: 1px; /* Optional: Set the border width */
+    cursor: pointer; /* This will show the clickable hand cursor */
   }
 
   .table-rows {
@@ -98,6 +98,12 @@ h4 {
   font-size: 0.8rem; /* Adjust font size for larger screens */
 }
 
+.vote-icon {
+  width: 5vh;
+  height: 5vh;
+  cursor: pointer; /* This will show the clickable hand cursor */
+}
+
 /* Adjust for larger screens (desktop) */
 @media (min-width: 769px) {
   .mat-mdc-table {
@@ -119,8 +125,9 @@ h4 {
       object-fit: cover; /* Ensure the image fits nicely within the row */
       border-radius: 5px; /* Optional: Add rounded corners */
       border-color: $tertiary-color; /* Optional: Add a border to the image */
-      border-width: .5vh; /* Optional: Set the border width */
+      border-width: 0.5vh; /* Optional: Set the border width */
       border-style: solid;
+      cursor: pointer; /* This will show the clickable hand cursor */
     }
 
     .table-rows {
@@ -165,6 +172,7 @@ h4 {
   .vote-icon {
     width: 5vh;
     height: 5vh;
+    cursor: pointer; /* This will show the clickable hand cursor */
   }
 
   h4 {
