@@ -15,15 +15,16 @@ export interface AviaryPhoto {
   votes: number;
   uploadDate: string;
   author: string;
-  comments: Comment[];
+  comments: any[];
+  parsedComments?: any[];
   public: boolean;
   reports?: number;
 }
 
 export interface Comment {
-  id: number;
   username: string;
   profilePicture: string;
+  date: string;
   text: string;
 }
 

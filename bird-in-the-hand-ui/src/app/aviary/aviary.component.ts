@@ -3,7 +3,7 @@ import { AviaryPhoto } from '../models/models';
 import { MatTableDataSource } from '@angular/material/table';
 import { BirdManagementService } from '../bird-management.service';
 import { MatDialog } from '@angular/material/dialog';
-import { DetailViewComponent } from '../detail-view/detail-view.component';
+import { AviaryDetailViewComponent } from '../aviary-detail-view/aviary-detail-view.component';
 
 @Component({
   selector: 'app-aviary',
@@ -36,8 +36,16 @@ export class AviaryComponent implements OnInit {
   }
 
   openPhotoDetailDialog(aviaryPhoto: AviaryPhoto) {
-    this.dialog.open(DetailViewComponent, {
+    const dialogRef = this.dialog.open(AviaryDetailViewComponent, {
+      width: '100vw',
+      maxWidth: '100vw',
+      height: '100vh',
+      panelClass: 'full-screen-modal',
       data: aviaryPhoto,
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log('The dialog was closed', result);
     });
   }
 

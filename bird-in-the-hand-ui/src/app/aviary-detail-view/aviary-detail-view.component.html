@@ -1,0 +1,18 @@
+<div class="container" *ngIf="loaded">
+  <div class="image-center">
+    <img [src]="aviaryPhoto.photo" alt="Centered Image" />
+  </div>
+  <div class="comments-panel">
+    <div class="comment" *ngFor="let comment of aviaryPhoto.parsedComments">
+      <div class="comment-text">{{ comment.text }}</div>
+      <div class="comment-meta flex-row">
+        <span>
+          <img class="comment-picture" [src]="comment.profilePicture" />
+          {{ comment.username }}</span
+        >
+        <span>{{ comment.date.$date | date : "MMMM dd yyyy" }}</span>
+      </div>
+    </div>
+    <button mat-raised-button (click)="closeDialog()">Close</button>
+  </div>
+</div>

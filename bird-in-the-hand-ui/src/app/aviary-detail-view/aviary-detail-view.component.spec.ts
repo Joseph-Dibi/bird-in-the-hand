@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DetailViewComponent } from './detail-view.component';
+import { AviaryDetailViewComponent } from './aviary-detail-view.component';
 
 describe('DetailViewComponent', () => {
-  let component: DetailViewComponent;
-  let fixture: ComponentFixture<DetailViewComponent>;
+  let component: AviaryDetailViewComponent;
+  let fixture: ComponentFixture<AviaryDetailViewComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [DetailViewComponent]
+      declarations: [AviaryDetailViewComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(DetailViewComponent);
+    fixture = TestBed.createComponent(AviaryDetailViewComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
