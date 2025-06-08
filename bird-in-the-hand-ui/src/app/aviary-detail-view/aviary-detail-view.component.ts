@@ -31,6 +31,10 @@ export class AviaryDetailViewComponent implements OnInit {
     this.dialogRef.close('Dialog closed');
   }
   
+  /*
+  * Comments were accidentally stored as strings in the mongoDB instead of separate objects.
+  * As a result, comments need to be parsed into a Comment object to meet display expectations on the UI.
+  */
   setComments() {
     let parsedComments: Comment[] = [];
     this.aviaryPhoto.comments.forEach(comment => {

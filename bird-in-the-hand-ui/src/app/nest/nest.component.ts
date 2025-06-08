@@ -58,6 +58,10 @@ export class NestComponent implements OnInit {
   }
   constructor(private birdManagementService: BirdManagementService) {}
 
+  /*
+  * Retrieves user Nest profile, currently on username and registration date.
+  * Eventually will include a customizable profile picture and the ability to edit/upload new birding photos.
+  */
   ngOnInit(): void {
     this.birdManagementService.getNestProfile().subscribe({
       next: (response) => {

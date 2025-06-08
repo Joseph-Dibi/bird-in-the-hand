@@ -18,6 +18,12 @@ export class LoginComponent {
       password: ['', [Validators.required]],
     });
   }
+
+  /*
+  * Login checks username and hashed password against the database.
+  * Succesfully finding credentials returns the username to be used as a unique identifier for requests.
+  * User is then routed to the Aviary.
+  */
   onSubmit(): void {
       const credentials = {
         username: this.username.value,

@@ -2,7 +2,6 @@ package com.bird.hand.controllers;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -22,7 +21,6 @@ public class BirdInTheHandController {
 	private static final String BASE_URL = "/bird-in-the-hand";
 	private final BirdInTheHandService birdInTheHandService;
 
-	@Autowired
 	public BirdInTheHandController(
 			BirdInTheHandService birdInTheHandService
 			) {

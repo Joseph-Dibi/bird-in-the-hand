@@ -25,12 +25,15 @@ public class BirdInTheHandService {
 	private static final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 
 	public User login(String username, String password) {
+		/*
+		*	Logs in user by verifying username/password combination vs stored credentials in db.
+		*/
 	    Query query = new Query();
 	    query.addCriteria(Criteria.where("username").is(username));
 	    List<User> users = mongoTemplate.find(query, User.class, "users");
 	    try {
 	        if (users != null && !users.isEmpty() && verifyPassword(password, users.get(0).getPassword())) {
-	        	users.get(0).setPassword(null); // Clear password before returning.
+	        	users.get(0).setPassword(null); // Clear password before returning. Username is used in session storage as a unique key.
 	            return users.get(0);
 	        } else {
 		        System.out.println("Invalid username or password.");
@@ -47,8 +50,7 @@ public class BirdInTheHandService {
 
 	public User register(String username, String password, String email) {
 
-		// Here you would typically save the user to the database
-		// For example:
+		// User registration logic. Hashes and salts password before storing. 
 		try {
 			Document userDoc = new Document("username", username).append("password", hashPassword(password)).append("email",
 					email).append("memberSince", java.time.Instant.now());
@@ -66,14 +68,17 @@ public class BirdInTheHandService {
 	}
 
 	public static String hashPassword(String password) {
+		// Hashes the password using BCrypt
 		return encoder.encode(password);
 	}
 
 	public static boolean verifyPassword(String password, String hashedPassword) {
+		// Password verification using BCrypt
 		return encoder.matches(password, hashedPassword);
 	}
 
 	public User nestPage(String username) {
+		// Retrieving user information for the Nest page using username.
 	    Query query = new Query();
 	    query.addCriteria(Criteria.where("username").is(username));
 	    List<User> users = mongoTemplate.find(query, User.class, "users");
@@ -82,7 +87,6 @@ public class BirdInTheHandService {
 	    	System.out.println("Found User");
 			return users.get(0);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 			return null;
 		}
@@ -91,8 +95,7 @@ public class BirdInTheHandService {
 
 	public User report(String username, String password, String email) {
 
-			// Here you would typically save the user to the database
-			// For example:
+			// Eventual report logic. Will be using an insert statement so this is a placeholder for now.
 			try {
 				Document userDoc = new Document("username", username).append("password", hashPassword(password)).append("email",
 						email).append("memberSince", java.time.Instant.now());
@@ -110,6 +113,7 @@ public class BirdInTheHandService {
 	}
 	
 	public List<Vote> retrieveVotes(String username) {
+		// Retrieves all votes for a given username.
 	    Query query = new Query();
 	    query.addCriteria(Criteria.where("username").is(username));
 	    List<Vote> votes = mongoTemplate.find(query, Vote.class, "votes");
@@ -129,8 +133,10 @@ public class BirdInTheHandService {
 	
 	public Vote vote(String username, String aviaryPhoto) {
 
-		// Here you would typically save the user to the database
-		// For example:
+		/* 
+		 * Allows users to vote for their favorite aviary photos. 
+		 * Currently less of a popularity contest and more of a competitive sport due to no restrictions on unique usernames for voting.
+		*/
 		try {
 			Document voteDoc = new Document("username", username).append("aviaryPhoto", aviaryPhoto);
 			mongoTemplate.insert(voteDoc, "votes");

@@ -22,6 +22,11 @@ export class RegisterComponent {
     private birdManagementService: BirdManagementService,
     private router: Router
   ) {
+    /*
+    * Requiring usernames and passwords of a certainly complexity
+    * adds a new challenge to local development once password hashing is implemented.
+    * Several accounts had to be created over the course of development as passwords were created and promptly forgotten.
+    */
     this.loginForm = this.fb.group({
       username: ['', [Validators.required, Validators.minLength(3)]],
       password: [
@@ -73,9 +78,12 @@ export class RegisterComponent {
     return '';
   }
 
+  /*
+  * Successfully registering a user persists the username/password combination for later login attemps
+  * and navigates the user to the Nest profile page. 
+  */
   onSubmit(event: Event): void {
     event.preventDefault();
-    // if (!this.loginForm.valid) {
     const registration = {
       username: this.username.value,
       password: this.password.value,
@@ -100,5 +108,4 @@ export class RegisterComponent {
       },
     });
   }
-  // }
 }
